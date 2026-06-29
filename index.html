@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CodeBunny Pro 🐰 | Smart Code Reviewer</title>
+  <title>CodeBunny Pro 🐰</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fira+Code&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -22,73 +22,67 @@
       background: linear-gradient(135deg, var(--pink), var(--lavender), var(--blue));
       color: var(--text); min-height: 100vh; padding: 16px; transition: 0.3s;
     }
-   .container { max-width: 650px; margin: 0 auto; }
-   .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-   .logo-wrap { display: flex; align-items: center; gap: 12px; }
-   .logo { font-size: 2.5rem; }
+  .container { max-width: 650px; margin: 0 auto; }
+  .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; }
+  .logo { font-size: 2.5rem; }
     h1 { color: var(--hotpink); font-size: 1.8rem; font-weight: 600; }
-   .tagline { font-size: 0.85rem; opacity: 0.8; }
-   .theme-toggle {
+  .tagline { font-size: 0.85rem; opacity: 0.8; }
+  .theme-toggle {
       background: var(--card); border: 2px solid var(--border); border-radius: 50px;
       width: 50px; height: 26px; cursor: pointer; position: relative;
     }
-   .theme-toggle::after {
-      content: '🌙'; position: absolute; top: 1px; left: 2px; font-size: 16px;
-      transition: 0.3s;
+  .theme-toggle::after {
+      content: '🌙'; position: absolute; top: 1px; left: 2px; font-size: 16px; transition: 0.3s;
     }
-    [data-theme="dark"] .theme-toggle::after { content: '☀️'; left: 24px; }
-
-   .card {
+    [data-theme="dark"].theme-toggle::after { content: '☀️'; left: 24px; }
+  .card {
       background: var(--card); backdrop-filter: blur(10px);
       border-radius: 24px; padding: 20px; box-shadow: 0 8px 32px rgba(184,146,255,0.2);
       border: 2px solid var(--border); margin-bottom: 16px;
     }
-   .controls { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .controls { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
     select, button {
       padding: 12px 16px; border: none; border-radius: 16px;
       font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 600;
     }
-    select { flex: 1; min-width: 140px; background: rgba(255,255,255,0.5); 
+    select { flex: 1; min-width: 140px; background: rgba(255,255,255,0.5);
              color: var(--text); border: 2px solid var(--lavender); }
     button {
       background: var(--hotpink); color: white; cursor: pointer;
       box-shadow: 0 4px var(--purple); transition: 0.1s;
     }
     button:active { transform: translateY(2px); box-shadow: 0 2px var(--purple); }
-   .btn-secondary { background: var(--purple); box-shadow: 0 4px #8B6BD1; }
-
+  .btn-secondary { background: var(--purple); box-shadow: 0 4px #8B6BD1; }
     #code {
       width: 100%; height: 280px; padding: 16px; border: 2px solid var(--lavender);
       border-radius: 16px; font-family: 'Fira Code', monospace; font-size: 13px;
       background: rgba(255,255,255,0.5); resize: none; line-height: 1.5; color: var(--text);
     }
     [data-theme="dark"] #code { background: rgba(0,0,0,0.3); }
-
     #result { display: none; }
-   .result-header { display: flex; align-items: center; justify-content: space-between; 
+  .result-header { display: flex; align-items: center; justify-content: space-between;
                      margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
-   .result-left { display: flex; align-items: center; gap: 10px; }
-   .bunny-emoji { font-size: 2rem; }
-   .result-title { font-size: 1.2rem; font-weight: 600; }
-   .result-actions { display: flex; gap: 8px; }
-   .btn-small { padding: 8px 12px; font-size: 12px; border-radius: 12px; }
-
-   .issue {
-      background: rgba(255,255,255,0.5); padding: 12px; border-radius: 12px; 
+  .result-left { display: flex; align-items: center; gap: 10px; }
+  .bunny-emoji { font-size: 2rem; }
+  .result-title { font-size: 1.2rem; font-weight: 600; }
+  .result-actions { display: flex; gap: 8px; }
+  .btn-small { padding: 8px 12px; font-size: 12px; border-radius: 12px; }
+  .issue {
+      background: rgba(255,255,255,0.5); padding: 12px; border-radius: 12px;
       margin-bottom: 8px; border-left: 4px solid; font-size: 14px;
     }
-    [data-theme="dark"] .issue { background: rgba(0,0,0,0.2); }
-   .error { border-color: #FF6B6B; }
-   .warning { border-color: #FFD93D; }
-   .suggestion { border-color: #6BCB77; }
-   .perfect { border-color: #6BCB77; background: rgba(107,203,119,0.15); }
-
-   .issue-type { font-weight: 600; font-size: 11px; text-transform: uppercase; opacity: 0.7; }
-   .stats { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
-   .stat { background: rgba(255,255,255,0.5); padding: 8px 12px; border-radius: 12px; font-size: 13px; }
-    [data-theme="dark"] .stat { background: rgba(0,0,0,0.2); }
-   .footer { text-align: center; font-size: 12px; opacity: 0.6; margin-top: 20px; }
-   .toast {
+    [data-theme="dark"].issue { background: rgba(0,0,0,0.2); }
+  .error { border-color: #FF6B6B; }
+  .warning { border-color: #FFD93D; }
+  .suggestion { border-color: #6BCB77; }
+  .perfect { border-color: #6BCB77; background: rgba(107,203,119,0.15); }
+  .issue-type { font-weight: 600; font-size: 11px; text-transform: uppercase; opacity: 0.7; }
+  .stats { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .stat { background: rgba(255,255,255,0.5); padding: 8px 12px; border-radius: 12px; font-size: 13px; }
+    [data-theme="dark"].stat { background: rgba(0,0,0,0.2); }
+  .footer { text-align: center; font-size: 12px; opacity: 0.6; margin-top: 20px; }
+  .toast {
       position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
       background: var(--hotpink); color: white; padding: 12px 20px; border-radius: 50px;
       font-size: 14px; font-weight: 600; display: none; z-index: 1000;
@@ -105,7 +99,7 @@
           <p class="tagline">Smart rule-based reviewer bestie</p>
         </div>
       </div>
-      <div class="theme-toggle" onclick="toggleTheme()"></div>
+      <div class="theme-toggle" id="themeToggle"></div>
     </div>
 
     <div class="card">
@@ -116,8 +110,8 @@
           <option value="css">CSS</option>
           <option value="python">Python</option>
         </select>
-        <button onclick="reviewCode()">Review ✨</button>
-        <button class="btn-secondary" onclick="copyCode()">Copy 📋</button>
+        <button id="reviewBtn">Review ✨</button>
+        <button class="btn-secondary" id="copyBtn">Copy 📋</button>
       </div>
       <textarea id="code" placeholder="// Paste your code here Pookie...
 function hello() {
@@ -129,7 +123,7 @@ function hello() {
     <div class="card" id="result"></div>
     <p class="footer">Made with 💖 by Pookie | 100% Client-side, No API</p>
   </div>
-  
+
   <div class="toast" id="toast"></div>
 
   <script>
@@ -149,7 +143,7 @@ function hello() {
         { pattern: /<br\s*\/?>\s*<br\s*\/?>/g, type: 'warning', msg: 'Multiple <br> tags? Use CSS margin instead 📏' }
       ],
       css: [
-        { pattern: /!important/g, type: 'warning', msg: 'Avoid !important. It makes CSS hard to debug 😵' },
+        { pattern: /!important/g, type: 'warning', msg: 'Avoid!important. It makes CSS hard to debug 😵' },
         { pattern: /\b\d+px\b/g, type: 'suggestion', msg: 'Consider "rem" or "%" for responsive design 📱' },
         { pattern: /#([0-9a-fA-F]{3,6})/g, type: 'suggestion', msg: 'Use CSS variables for colors 🎨' },
         { pattern: /z-index:\s*9999/g, type: 'warning', msg: 'Z-index wars! Keep values organized 🪜' }
@@ -162,13 +156,12 @@ function hello() {
       ]
     };
 
-    // Theme toggle
     function toggleTheme() {
-      const theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+      const theme = document.body.dataset.theme === 'dark'? 'light' : 'dark';
       document.body.dataset.theme = theme;
       localStorage.setItem('codebunny-theme', theme);
     }
-    // Load saved theme
+
     document.body.dataset.theme = localStorage.getItem('codebunny-theme') || 'light';
 
     function showToast(msg) {
@@ -198,7 +191,6 @@ function hello() {
     function reviewCode() {
       const code = document.getElementById('code').value;
       const lang = document.getElementById('lang').value;
-      const resultDiv = document.getElementById('result');
 
       if (!code.trim()) {
         showResult('error', '😿', 'Empty Code!', [{type: 'error', msg: 'Arre Pookie, code to daalo pehle!'}], 0);
@@ -208,7 +200,6 @@ function hello() {
       let issues = [];
       let lines = code.split('\n').length;
 
-      // 1. Syntax Check
       try {
         if (lang === 'js') new Function(code);
         if (lang === 'html') {
@@ -219,17 +210,14 @@ function hello() {
         issues.push({type: 'error', msg: `Syntax Error: ${e.message} 😵`});
       }
 
-      // 2. Bracket Check
       const open = (code.match(/{/g) || []).length + (code.match(/\(/g) || []).length + (code.match(/\[/g) || []).length;
       const close = (code.match(/}/g) || []).length + (code.match(/\)/g) || []).length + (code.match(/\]/g) || []).length;
-      if (open !== close) issues.push({type: 'error', msg: 'Brackets mismatch! Check your { } ( ) [ ] 💔'});
+      if (open!== close) issues.push({type: 'error', msg: 'Brackets mismatch! Check your { } ( ) [ ] 💔'});
 
-      // 3. Rule-Based Checks
-      rules.forEach(rule => {
+      rules[lang].forEach(rule => {
         if (rule.pattern.test(code)) issues.push({type: rule.type, msg: rule.msg});
       });
 
-      // 4. Style: Line length + Empty lines
       code.split('\n').forEach((line, i) => {
         if (line.length > 80) issues.push({type: 'suggestion', msg: `Line ${i+1} too long (${line.length} chars). Keep under 80 📏`});
       });
@@ -241,7 +229,7 @@ function hello() {
         showResult('perfect', '🥳', 'Purrfect!', [{type: 'perfect', msg: 'Yayy Pookie! Your code is flawless! No issues found 💖✨'}], lines);
       } else {
         const hasError = issues.some(i => i.type === 'error');
-        showResult(hasError ? 'error' : 'warning', hasError ? '😵' : '🤔', hasError ? 'Fix Needed!' : 'Almost There!', issues, lines);
+        showResult(hasError? 'error' : 'warning', hasError? '😵' : '🤔', hasError? 'Fix Needed!' : 'Almost There!', issues, lines);
       }
     }
 
@@ -261,15 +249,15 @@ function hello() {
             <div class="result-title">${title}</div>
           </div>
           <div class="result-actions">
-            <button class="btn-small" onclick="copyCode()">Copy Code</button>
-            <button class="btn-small btn-secondary" onclick="shareResult()">Share</button>
+            <button class="btn-small" id="copyCodeBtn">Copy Code</button>
+            <button class="btn-small btn-secondary" id="shareBtn">Share</button>
           </div>
         </div>
         <div class="stats">
           <div class="stat">📝 ${lines} lines</div>
-          ${counts.error ? `<div class="stat">❌ ${counts.error} errors</div>` : ''}
-          ${counts.warning ? `<div class="stat">⚠️ ${counts.warning} warnings</div>` : ''}
-          ${counts.suggestion ? `<div class="stat">💡 ${counts.suggestion} tips</div>` : ''}
+          ${counts.error? `<div class="stat">❌ ${counts.error} errors</div>` : ''}
+          ${counts.warning? `<div class="stat">⚠️ ${counts.warning} warnings</div>` : ''}
+          ${counts.suggestion? `<div class="stat">💡 ${counts.suggestion} tips</div>` : ''}
         </div>
         ${issues.map(i => `
           <div class="issue ${i.type}">
@@ -278,7 +266,15 @@ function hello() {
           </div>
         `).join('')}
       `;
+
+      document.getElementById('copyCodeBtn').addEventListener('click', copyCode);
+      document.getElementById('shareBtn').addEventListener('click', shareResult);
     }
+
+    // FIXED: Event listeners instead of onclick
+    document.getElementById('reviewBtn').addEventListener('click', reviewCode);
+    document.getElementById('copyBtn').addEventListener('click', copyCode);
+    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
   </script>
 </body>
 </html>
