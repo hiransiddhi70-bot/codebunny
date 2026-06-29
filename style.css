@@ -221,3 +221,23 @@ textarea {
     font-size: 14px;
     background: rgba(255,255,255,0.7);
 }
+.score-box {
+    padding: 10px;
+    background: rgba(255, 77, 136, 0.1);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.good {
+    color: #00c48c;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.issues p {
+    background: rgba(255,255,255,0.6);
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 8px;
+}
