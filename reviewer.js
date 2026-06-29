@@ -1,44 +1,46 @@
 function reviewCode(code) {
     let issues = [];
-    let score = 10; // start with full marks 💯
+    let score = 10;
 
-    // 🌸 Rule 1: Empty code
-    if (!code || code.trim().length === 0) {
-        issues.push("🐰 CodeBunny says: Your code is empty!");
-        return { issues, score: 0 };
+    if (!code || code.trim() === "") {
+        return { issues: ["🐰 Code is empty!"], score: 0 };
     }
 
-    // 🌸 Rule 2: console.log usage
-    if (code.includes("console.log")) {
-        issues.push("⚠️ Avoid console.log in production code");
+    // ❌ Rule: any empty function
+    if (code.includes("function") && code.includes("() {}")) {
+        issues.push("⚠️ Empty function detected");
         score -= 1;
     }
 
-    // 🌸 Rule 3: alert usage (bad practice)
-    if (code.includes("alert(")) {
-        issues.push("⚠️ alert() is not recommended for modern UI");
-        score -= 1;
-    }
-
-    // 🌸 Rule 4: var usage (old style)
-    if (code.includes("var ")) {
-        issues.push("💡 Use let/const instead of var");
-        score -= 1;
-    }
-
-    // 🌸 Rule 5: very short variables (basic heuristic)
-    if (code.match(/\b[a-zA-Z]\s*=/g)) {
-        issues.push("🧁 Use meaningful variable names");
+    // ❌ Rule: deep nesting (very basic check)
+    let nesting = (code.match(/{/g) || []).length;
+    if (nesting > 5) {
+        issues.push("🧠 Code seems too complex (high nesting)");
         score -= 2;
     }
 
-    // 🌸 Rule 6: missing semi-colon hint
-    if (code.includes("function") && !code.includes(";")) {
-        issues.push("✨ Check for missing semicolons (style suggestion)");
+    // ❌ Rule: missing const/let usage
+    if (code.includes("var ")) {
+        issues.push("💡 Replace 'var' with let/const");
         score -= 1;
     }
 
-    // 💖 Final score clamp
+    // ❌ Rule: long lines (basic heuristic)
+    let lines = code.split("\n");
+    lines.forEach(line => {
+        if (line.length > 80) {
+            issues.push("📏 Long line detected (>80 chars)");
+            score -= 1;
+        }
+    });
+
+    // ❌ Rule: multiple console logs
+    let logs = (code.match(/console\.log/g) || []).length;
+    if (logs > 2) {
+        issues.push("🐛 Too many console.log statements");
+        score -= 1;
+    }
+
     if (score < 0) score = 0;
 
     return { issues, score };
