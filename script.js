@@ -11,7 +11,9 @@ function runReview() {
 
     let html = "";
 
-    html += `<p class="score">🐰 Code Score: <b>${result.score}/10</b></p>`;
+   html += `<p class="score">
+🐰 Code Score: <b>${result.score}/10</b> - ${getScoreLabel(result.score)}
+</p>`;
 
     if (result.issues.length === 0) {
         html += `<p class="good">✨ Perfect code! CodeBunny is proud 🐰💖</p>`;
