@@ -8,39 +8,36 @@
 </head>
 <body>
 
-    <!-- 🌸 Main Container -->
-    <div class="container">
+<div class="container">
 
-        <!-- 💖 Header -->
-        <header>
-            <h1>🐰 CodeBunny</h1>
-            <p>Your cute AI-free code reviewer ✨</p>
-        </header>
+    <header>
+        <h1>🐰 CodeBunny</h1>
+        <p>Rule-based cute code reviewer ✨</p>
 
-        <!-- 🧁 Code Input Box -->
-        <div class="editor-box">
-    <div class="editor-header">
-        <span>🟢 🟡 🔴</span>
-        <p>main.js</p>
+        <button class="toggle-btn" onclick="toggleTheme()">🌙 Toggle Theme</button>
+    </header>
+
+    <div class="editor-box">
+        <div class="editor-header">
+            <span>🟢 🟡 🔴</span>
+            <p>main.js</p>
+        </div>
+
+        <textarea id="codeInput" placeholder="Paste your code here..."></textarea>
     </div>
 
-    <textarea id="codeInput" placeholder="Write or paste your code here..."></textarea>
+    <button onclick="runReview()">✨ Review Code</button>
+    <button onclick="downloadReport()">💾 Download Report</button>
+
+    <div class="output-section">
+        <h2>Results 💡</h2>
+        <div id="output"></div>
+    </div>
+
 </div>
- placeholder="Paste your code here..."></textarea>
-<button class="toggle-btn" onclick="toggleTheme()">🌙 Toggle Theme</button>
-           <button onclick="runReview()">✨ Review My Code</button>
-        </section>
-<button onclick="downloadReport()">💾 Download Report</button>
 
-        <!-- 🌷 Output Box -->
-        <section class="output-section">
-            <h2>Results 💡</h2>
-            <div id="output"></div>
-        </section>
+<script src="reviewer.js"></script>
+<script src="script.js"></script>
 
-    </div>
-
-    <script src="reviewer.js"></script>
-    <script src="script.js"></script>
 </body>
 </html>
