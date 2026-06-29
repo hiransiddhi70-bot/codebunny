@@ -6,26 +6,19 @@ function reviewCode(code) {
         return { issues: ["🐰 Code is empty!"], score: 0 };
     }
 
-    // ❌ Rule: any empty function
+    // ❌ Empty function check
     if (code.includes("function") && code.includes("() {}")) {
         issues.push("⚠️ Empty function detected");
         score -= 1;
     }
 
-    // ❌ Rule: deep nesting (very basic check)
-    let nesting = (code.match(/{/g) || []).length;
-    if (nesting > 5) {
-        issues.push("🧠 Code seems too complex (high nesting)");
-        score -= 2;
-    }
-
-    // ❌ Rule: missing const/let usage
+    // ❌ var usage
     if (code.includes("var ")) {
         issues.push("💡 Replace 'var' with let/const");
         score -= 1;
     }
 
-    // ❌ Rule: long lines (basic heuristic)
+    // ❌ long line check
     let lines = code.split("\n");
     lines.forEach(line => {
         if (line.length > 80) {
@@ -34,7 +27,7 @@ function reviewCode(code) {
         }
     });
 
-    // ❌ Rule: multiple console logs
+    // ❌ too many console logs
     let logs = (code.match(/console\.log/g) || []).length;
     if (logs > 2) {
         issues.push("🐛 Too many console.log statements");
