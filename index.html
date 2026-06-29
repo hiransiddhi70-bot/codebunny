@@ -35,7 +35,7 @@
  .theme-toggle::after {
       content: '🌙'; position: absolute; top: 1px; left: 2px; font-size: 16px; transition: 0.3s;
     }
-    [data-theme="dark"].theme-toggle::after { content: '☀️'; left: 24px; }
+    [data-theme="dark"] .theme-toggle::after { content: '☀️'; left: 24px; }
  .card {
       background: var(--card); backdrop-filter: blur(10px);
       border-radius: 24px; padding: 20px; box-shadow: 0 8px 32px rgba(184,146,255,0.2);
@@ -72,7 +72,7 @@
       background: rgba(255,255,255,0.5); padding: 12px; border-radius: 12px;
       margin-bottom: 8px; border-left: 4px solid; font-size: 14px;
     }
-    [data-theme="dark"].issue { background: rgba(0,0,0,0.2); }
+    [data-theme="dark"] .issue { background: rgba(0,0,0,0.2); }
  .error { border-color: #FF6B6B; }
  .warning { border-color: #FFD93D; }
  .suggestion { border-color: #6BCB77; }
@@ -80,7 +80,7 @@
  .issue-type { font-weight: 600; font-size: 11px; text-transform: uppercase; opacity: 0.7; }
  .stats { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
  .stat { background: rgba(255,255,255,0.5); padding: 8px 12px; border-radius: 12px; font-size: 13px; }
-    [data-theme="dark"].stat { background: rgba(0,0,0,0.2); }
+    [data-theme="dark"] .stat { background: rgba(0,0,0,0.2); }
  .footer { text-align: center; font-size: 12px; opacity: 0.6; margin-top: 20px; }
  .toast {
       position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
@@ -214,7 +214,7 @@ function hello() {
       const close = (code.match(/}/g) || []).length + (code.match(/\)/g) || []).length + (code.match(/\]/g) || []).length;
       if (open!== close) issues.push({type: 'error', msg: 'Brackets mismatch! Check your { } ( ) [ ] 💔'});
 
-      rules[lang].forEach(rule => {
+      rules.forEach(rule => {
         if (rule.pattern.test(code)) issues.push({type: rule.type, msg: rule.msg});
       });
 
@@ -252,7 +252,6 @@ function hello() {
             <button class="btn-small" id="copyCodeBtn">Copy Code</button>
             <button class="btn-small btn-secondary" id="shareBtn">Share</button>
           </div>
-        </div>
         <div class="stats">
           <div class="stat">📝 ${lines} lines</div>
           ${counts.error? `<div class="stat">❌ ${counts.error} errors</div>` : ''}
