@@ -7,23 +7,27 @@ function getScoreLabel(score) {
 function runReview() {
     let code = document.getElementById("codeInput").value;
     let result = reviewCode(code);
+
     let output = document.getElementById("output");
 
     let html = "";
 
-   html += `<p class="score">
-🐰 Code Score: <b>${result.score}/10</b> - ${getScoreLabel(result.score)}
-</p>`;
+    html += `<div class="score-box">
+        🐰 Score: <b>${result.score}/10</b> - ${getScoreLabel(result.score)}
+    </div>`;
 
     if (result.issues.length === 0) {
-        html += `<p class="good">✨ Perfect code! CodeBunny is proud 🐰💖</p>`;
+        html += `<div class="good">✨ Perfect Code! CodeBunny approves 💖</div>`;
     } else {
-        result.issues.forEach(issue => {
-            html += `<p class="issue">🫧 ${issue}</p>`;
+        html += `<div class="issues">`;
+        result.issues.forEach(i => {
+            html += `<p>🫧 ${i}</p>`;
         });
+        html += `</div>`;
     }
 
     output.innerHTML = html;
+}
 }
 }
 function toggleTheme() {
