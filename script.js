@@ -21,3 +21,14 @@ function runReview() {
 function toggleTheme() {
     document.body.classList.toggle("dark");
 }
+function downloadReport() {
+    let text = document.getElementById("output").innerText;
+
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+    link.download = "codebunny-report.txt";
+
+    link.click();
+}
