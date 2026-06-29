@@ -190,3 +190,34 @@ body.dark #output p {
     from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
 }
+.editor-box {
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(30,30,30,0.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: rgba(0,0,0,0.08);
+    font-size: 14px;
+}
+
+.editor-header p {
+    font-weight: bold;
+    color: #444;
+}
+
+textarea {
+    width: 100%;
+    height: 250px;
+    padding: 15px;
+    border: none;
+    outline: none;
+    resize: none;
+    font-family: monospace;
+    font-size: 14px;
+    background: rgba(255,255,255,0.7);
+}
