@@ -136,3 +136,31 @@ button:hover {
     transform: translateX(5px);
     background: rgba(255, 182, 193, 0.3);
 }
+body.dark {
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+}
+
+body.dark .container {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+body.dark textarea {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+body.dark #output p {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.toggle-btn {
+    margin-top: 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    background: #222;
+    color: white;
+}
