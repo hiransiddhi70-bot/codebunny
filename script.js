@@ -20,3 +20,6 @@ function runReview() {
 
     output.innerHTML = html;
 }
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+}
