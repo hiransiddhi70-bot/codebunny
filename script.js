@@ -1,3 +1,9 @@
+function getScoreLabel(score) {
+    if (score >= 9) return "🌸 Excellent Code";
+    if (score >= 7) return "✨ Good Code";
+    if (score >= 5) return "🧁 Needs Improvement";
+    return "⚠️ Fix Required";
+}
 function runReview() {
     let code = document.getElementById("codeInput").value;
     let result = reviewCode(code);
