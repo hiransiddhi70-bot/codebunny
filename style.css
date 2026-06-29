@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Fira+Code&display=swap');
+
+:root{
+    --pink:#ffd6e8;
+    --lavender:#e9dcff;
+    --blue:#dff5ff;
+    --primary:#ff7cab;
+    --purple:#a77bff;
+    --text:#4f4f63;
+    --white:rgba(255,255,255,.72);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Poppins,sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--pink),var(--lavender),var(--blue));
+    display:flex;
+    justify-content:center;
+    padding:30px 15px;
+    color:var(--text);
+}
+
+.container{
+    width:100%;
+    max-width:850px;
+}
+
+header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+header h1{
+    color:var(--primary);
+}
+
+.logo{
+    font-size:50px;
+}
+
+header>div:nth-child(2){
+    flex:1;
+}
+
+#themeBtn{
+    border:none;
+    background:white;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:22px;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+}
+
+.editor-card,
+.result-card{
+
+    background:var(--white);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:22px;
+
+    padding:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    margin-bottom:20px;
+
+}
+
+.toolbar{
+
+    display:flex;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:15px;
+
+}
+
+select,
+button{
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-family:Poppins,sans-serif;
+
+}
+
+select{
+
+    flex:1;
+
+}
+
+button{
+
+    background:var(--primary);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+#copyBtn{
+
+    background:var(--purple);
+
+}
+
+textarea{
+
+    width:100%;
+
+    height:320px;
+
+    border:none;
+
+    outline:none;
+
+    resize:none;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    background:white;
+
+    font-family:"Fira Code",monospace;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+.result-card{
+
+    display:none;
+
+}
+
+.issue{
+
+    padding:12px;
+
+    border-radius:12px;
+
+    margin:10px 0;
+
+    background:white;
+
+}
+
+.issue.error{
+
+    border-left:5px solid #ff6b6b;
+
+}
+
+.issue.warning{
+
+    border-left:5px solid orange;
+
+}
+
+.issue.suggestion{
+
+    border-left:5px solid #4caf50;
+
+}
+
+.score{
+
+    font-size:22px;
+
+    font-weight:600;
+
+    margin-bottom:15px;
+
+}
+
+footer{
+
+    text-align:center;
+
+    opacity:.7;
+
+    font-size:13px;
+
+}
+
+.dark{
+
+    background:#161621;
+
+    color:#f3f3f3;
+
+}
+
+.dark .editor-card,
+.dark .result-card{
+
+    background:#252538;
+
+}
+
+.dark textarea{
+
+    background:#1d1d2c;
+
+    color:white;
+
+}
+
+.dark #themeBtn{
+
+    background:#2b2b3f;
+
+    color:white;
+
+}
