@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBunny 🐰</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 🌸 Main Container -->
+    <div class="container">
+
+        <!-- 💖 Header -->
+        <header>
+            <h1>🐰 CodeBunny</h1>
+            <p>Your cute AI-free code reviewer ✨</p>
+        </header>
+
+        <!-- 🧁 Code Input Box -->
+        <section class="editor-section">
+            <textarea id="codeInput" placeholder="Paste your code here..."></textarea>
+
+            <button onclick="runReview()">✨ Review My Code</button>
+        </section>
+
+        <!-- 🌷 Output Box -->
+        <section class="output-section">
+            <h2>Results 💡</h2>
+            <div id="output"></div>
+        </section>
+
+    </div>
+
+    <script src="reviewer.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
